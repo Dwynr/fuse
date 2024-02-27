@@ -13,7 +13,8 @@ switch (platform) {
         target = `linux-${arch}`;
         break;
     case "darwin":
-        target = `mac-${arch}`;
+        //target = `mac-${arch}`;
+        target = "mac-x64";
         break;
     case "win32":
         target = `win-${arch}`;
