@@ -29,6 +29,20 @@
                     'xcode_settings': {'OTHER_CFLAGS': ['-g', '-O3', '-Wall']},
                 }],
 
+                ["OS=='mac' and target_arch=='arm'", {
+                    "include_dirs+": ["<(module_root_dir)/lib/mac-x64/include"],
+                    "libraries+": ["<(module_root_dir)/lib/mac-x64/libosxfuse.2.dylib"],
+                    "sources=": ["fuse.c"],
+                    'xcode_settings': {'OTHER_CFLAGS': ['-g', '-O3', '-Wall']},
+                }],
+
+                ["OS=='mac' and target_arch=='arm64'", {
+                    "include_dirs+": ["<(module_root_dir)/lib/mac-x64/include"],
+                    "libraries+": ["<(module_root_dir)/lib/mac-x64/libosxfuse.2.dylib"],
+                    "sources=": ["fuse.c"],
+                    'xcode_settings': {'OTHER_CFLAGS': ['-g', '-O3', '-Wall']},
+                }],
+
                 ["OS=='win' and target_arch=='x64'", {
                     "include_dirs+": [
                         "<!(echo %ProgramFiles(x86)%)/WinFsp/inc/fuse",
@@ -64,6 +78,20 @@
                 }],
 
                 ["OS=='mac' and target_arch=='x64'", {
+                    "copies=": [{
+                        "destination": "build/Release",
+                        "files": ["<(module_root_dir)/lib/mac-x64/libosxfuse.2.dylib"]
+                    }],
+                }],
+
+                ["OS=='mac' and target_arch=='arm'", {
+                    "copies=": [{
+                        "destination": "build/Release",
+                        "files": ["<(module_root_dir)/lib/mac-x64/libosxfuse.2.dylib"]
+                    }],
+                }],
+
+                ["OS=='mac' and target_arch=='arm64'", {
                     "copies=": [{
                         "destination": "build/Release",
                         "files": ["<(module_root_dir)/lib/mac-x64/libosxfuse.2.dylib"]
